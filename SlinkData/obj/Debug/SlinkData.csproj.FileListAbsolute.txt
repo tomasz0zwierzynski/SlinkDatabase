@@ -1,0 +1,12 @@
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\SlinkData.exe.config
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.Properties.Resources.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.csproj.GenerateResource.Cache
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\SlinkData.exe
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\SlinkData.pdb
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.MainForm.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.exe
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.pdb
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\MySql.Data.dll
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\MySql.Data.xml
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddLink.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.csprojResolveAssemblyReference.cache
