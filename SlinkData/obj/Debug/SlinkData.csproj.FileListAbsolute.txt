@@ -10,3 +10,5 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\MySql.Data.dll
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\bin\Debug\MySql.Data.xml
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddLink.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.csprojResolveAssemblyReference.cache
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddTown.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddPerson.resources

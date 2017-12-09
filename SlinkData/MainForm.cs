@@ -30,27 +30,80 @@ namespace SlinkData {
       private void addLink_Click(object sender, EventArgs e) {
          AddLink addLinkForm = new AddLink(context);
          addLinkForm.ShowDialog();
-         
+
          while (addLinkForm.Return == 2) {
             addLinkForm.Dispose();
             addLinkForm = new AddLink(context);
             addLinkForm.ShowDialog();
          }
 
-         if (addLinkForm.Return == 0) {
-            addLinkForm.Dispose();
+         int respond = addLinkForm.Return;
+         addLinkForm.Dispose();
+
+         if (respond == 0) {
             MessageBox.Show("Canceled");
-         }else if (addLinkForm.Return == 1) {
-            addLinkForm.Dispose();
+         }else if (respond == 1) {
             MessageBox.Show("Rows saved");
-         }else if (addLinkForm.Return == -1) {
-            addLinkForm.Dispose();
+         }else if (respond == -1) {
             MessageBox.Show("Form closed");
-         }else if (addLinkForm.Return == -2) {
-            addLinkForm.Dispose();
+         }else if (respond == -2) {
             MessageBox.Show("Form closed");
          }
 
+      }
+
+      private void addTown_Click(object sender, EventArgs e) {
+         AddTown addTownForm = new AddTown(context);
+         addTownForm.ShowDialog();
+
+         while (addTownForm.Return == 2) {
+            addTownForm.Dispose();
+            addTownForm = new AddTown(context);
+            addTownForm.ShowDialog();
+         }
+
+         int respond = addTownForm.Return;
+         addTownForm.Dispose();
+
+         if (respond == 0) {
+            MessageBox.Show("Canceled");
+         }
+         else if (respond == 1) {
+            MessageBox.Show("Rows saved");
+         }
+         else if (respond == -1) {
+            MessageBox.Show("Form closed");
+         }
+         else if (respond == -2) {
+            MessageBox.Show("Form closed");
+         }
+      }
+
+      private void addPerson_Click(object sender, EventArgs e) {
+         AddPerson addPersonForm = new AddPerson(context);
+         addPersonForm.ShowDialog();
+
+         while (addPersonForm.Return == 2) {
+            addPersonForm.Dispose();
+            addPersonForm = new AddPerson(context);
+            addPersonForm.ShowDialog();
+         }
+
+         int respond = addPersonForm.Return;
+         addPersonForm.Dispose();
+
+         if (respond == 0) {
+            MessageBox.Show("Canceled");
+         }
+         else if (respond == 1) {
+            MessageBox.Show("Rows saved");
+         }
+         else if (respond == -1) {
+            MessageBox.Show("Form closed");
+         }
+         else if (respond == -2) {
+            MessageBox.Show("Form closed");
+         }
       }
    }
 }

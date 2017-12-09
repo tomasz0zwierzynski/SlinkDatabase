@@ -56,6 +56,18 @@
     <Compile Include="AddLink.Designer.cs">
       <DependentUpon>AddLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPerson.Designer.cs">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTown.Designer.cs">
+      <DependentUpon>AddTown.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +79,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddLink.resx">
       <DependentUpon>AddLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPerson.resx">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTown.resx">
+      <DependentUpon>AddTown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -102,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\slinkwood_ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slinkwood_ribbon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Database.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

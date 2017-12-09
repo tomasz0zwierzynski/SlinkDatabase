@@ -13,10 +13,8 @@ namespace SlinkData {
       private const string server = "s26.zenbox.pl";
       private const string database = "slink_wood";
       private const string uid = "slink_client";
-      private const string password = "6MjUpyRykh1";
-
-
-
+      private const string password = "***";
+      
       public string ConnectionString { get; }
       private string lastError;
 
@@ -40,8 +38,7 @@ namespace SlinkData {
          }
          return result;
       }
-
-
+      
 
       public string GetLastError() {
          return lastError;
