@@ -63,7 +63,6 @@ namespace SlinkData {
                Return = -2;
                this.Close();
             }
-
          }
       }
 
@@ -140,30 +139,5 @@ namespace SlinkData {
          System.Diagnostics.Process.Start(search);
       }
 
-      private class TownSize {
-         public int Id { get; set; }
-         public string SizeName { get; set; }
-         public int LowerLimit { get; set; }
-         public int UpperLimit { get; set; }
-         public string Comment { get; set; }
-
-         public TownSize(int id, string sizeName, int lowerLimit, int upperLimit, string comment) {
-            Id = id;
-            SizeName = sizeName;
-            LowerLimit = lowerLimit;
-            UpperLimit = upperLimit;
-            Comment = comment;
-         }
-
-         public override string ToString() {
-            if (Comment == "") {
-               return SizeName + " ( " + LowerLimit + " - " + UpperLimit + " )";
-            }
-            else {
-               return SizeName + " ( " + LowerLimit + " - " + UpperLimit + " ) :" + Comment;
-            }
-
-         }
-      }
    }
 }

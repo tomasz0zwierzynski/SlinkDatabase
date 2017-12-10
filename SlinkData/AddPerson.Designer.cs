@@ -88,6 +88,7 @@
          // 
          // linkCB
          // 
+         this.linkCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.linkCB.FormattingEnabled = true;
          this.linkCB.Location = new System.Drawing.Point(97, 160);
          this.linkCB.Name = "linkCB";
@@ -173,6 +174,7 @@
          // 
          // occupationCB
          // 
+         this.occupationCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.occupationCB.FormattingEnabled = true;
          this.occupationCB.Location = new System.Drawing.Point(97, 85);
          this.occupationCB.Name = "occupationCB";
@@ -190,6 +192,7 @@
          // 
          // occupation2CB
          // 
+         this.occupation2CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.occupation2CB.FormattingEnabled = true;
          this.occupation2CB.Location = new System.Drawing.Point(321, 85);
          this.occupation2CB.Name = "occupation2CB";

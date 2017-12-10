@@ -123,26 +123,5 @@ namespace SlinkData {
          this.Close();
       }
 
-      private class LinkType {
-         public int Id { get; set; }
-         public string Name { get; set; }
-         public string Description { get; set; }
-
-         public LinkType(int id, string name, string description) {
-            Id = id;
-            Name = name;
-            Description = description;
-         }
-
-         public override string ToString() {
-            if (Description == "") {
-               return Name;
-            }
-            else {
-               return Name + ": " + Description;
-            }
-
-         }
-      }
    }
 }

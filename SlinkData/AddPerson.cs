@@ -250,49 +250,5 @@ namespace SlinkData {
 
       }
 
-      private class Link {
-         public int Id { get; set; }
-         public string LinkType { get; set; }
-         public string Url { get; set; }
-         public string Comment { get; set; }
-
-         public Link(int id, string linkType, string url, string comment) {
-            Id = id;
-            LinkType = linkType;
-            Url = url;
-            Comment = comment;
-         }
-
-         public override string ToString() {
-            if (Comment == "") {
-               return LinkType + ": " + Url;
-            }
-            else {
-               return LinkType + ", " + Comment + ": " + Url;
-            }
-
-         }
-      }
-
-      private class Occupation {
-         public int Id { get; set; }
-         public string Name { get; set; }
-         public string Description { get; set; }
-
-         public Occupation(int id, string name, string description) {
-            Id = id;
-            Name = name;
-            Description = description;
-         }
-
-         public override string ToString() {
-            if (Description == "") {
-               return Name;
-            }else {
-               return Name + ": " + Description;
-            }
-         }
-      }
-
    }
 }

@@ -12,3 +12,5 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddL
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.csprojResolveAssemblyReference.cache
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddTown.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddPerson.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddClub.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddFestival.resources

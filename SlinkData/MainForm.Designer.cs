@@ -89,6 +89,7 @@
          this.addClub.TabIndex = 5;
          this.addClub.Text = "Add Club/Pub";
          this.addClub.UseVisualStyleBackColor = true;
+         this.addClub.Click += new System.EventHandler(this.addClub_Click);
          // 
          // addPerson
          // 
@@ -108,6 +109,7 @@
          this.addFestival.TabIndex = 7;
          this.addFestival.Text = "Add Festival";
          this.addFestival.UseVisualStyleBackColor = true;
+         this.addFestival.Click += new System.EventHandler(this.addFestival_Click);
          // 
          // showLinks
          // 

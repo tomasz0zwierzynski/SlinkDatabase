@@ -105,5 +105,59 @@ namespace SlinkData {
             MessageBox.Show("Form closed");
          }
       }
+
+      private void addClub_Click(object sender, EventArgs e) {
+         AddClub addClubForm = new AddClub(context);
+         addClubForm.ShowDialog();
+
+         while (addClubForm.Return == 2) {
+            addClubForm.Dispose();
+            addClubForm = new AddClub(context);
+            addClubForm.ShowDialog();
+         }
+
+         int respond = addClubForm.Return;
+         addClubForm.Dispose();
+
+         if (respond == 0) {
+            MessageBox.Show("Canceled");
+         }
+         else if (respond == 1) {
+            MessageBox.Show("Rows saved");
+         }
+         else if (respond == -1) {
+            MessageBox.Show("Form closed");
+         }
+         else if (respond == -2) {
+            MessageBox.Show("Form closed");
+         }
+      }
+
+      private void addFestival_Click(object sender, EventArgs e) {
+         AddFestival addFestivalForm = new AddFestival(context);
+         addFestivalForm.ShowDialog();
+
+         while (addFestivalForm.Return == 2) {
+            addFestivalForm.Dispose();
+            addFestivalForm = new AddFestival(context);
+            addFestivalForm.ShowDialog();
+         }
+
+         int respond = addFestivalForm.Return;
+         addFestivalForm.Dispose();
+
+         if (respond == 0) {
+            MessageBox.Show("Canceled");
+         }
+         else if (respond == 1) {
+            MessageBox.Show("Rows saved");
+         }
+         else if (respond == -1) {
+            MessageBox.Show("Form closed");
+         }
+         else if (respond == -2) {
+            MessageBox.Show("Form closed");
+         }
+      }
    }
 }
