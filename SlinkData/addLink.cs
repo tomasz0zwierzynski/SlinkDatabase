@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -123,5 +124,16 @@ namespace SlinkData {
          this.Close();
       }
 
+      private void showUrl_Click(object sender, EventArgs e) {
+         if (Uri.IsWellFormedUriString(urlTB.Text, UriKind.Absolute)) {
+
+            ProcessStartInfo sInfo = new ProcessStartInfo(new Uri(urlTB.Text).AbsoluteUri);
+            Process.Start(sInfo);
+         }else {
+            string url = urlTB.Text;
+            urlTB.Text = "http://" + url;
+         }
+
+      }
    }
 }

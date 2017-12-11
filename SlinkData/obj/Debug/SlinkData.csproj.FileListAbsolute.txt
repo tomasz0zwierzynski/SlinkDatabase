@@ -14,3 +14,8 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddT
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddPerson.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddClub.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.AddFestival.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.showLinks.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.ShowTowns.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.ShowPubs.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.ShowFestivals.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.ShowPeople.resources

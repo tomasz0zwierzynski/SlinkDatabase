@@ -53,6 +53,54 @@
 
    }
 
+   public class PersonExt {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public string Phonenumber { get; set; }
+      public string Mail { get; set; }
+      public string Comment { get; set; }
+      public string Link { get; set; }
+      public string Occupy1 { get; set; }
+      public string Occupy2 { get; set; }
+
+      public PersonExt(int id, string name, string phonenumber, string mail,string comment, string link, string occupy1, string occupy2) {
+         Id = id;
+         Name = name;
+         Phonenumber = phonenumber;
+         Mail = mail;
+         Comment = comment;
+         Link = link;
+         Occupy1 = occupy1;
+         Occupy2 = occupy2;
+      }
+   }
+
+   public class Festival {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public string Town { get; set; }
+      public string Link { get; set; }
+      public string Mail { get; set; }
+      public string Start { get; set; }
+      public string Deadline { get; set; }
+      public string Manager { get; set; }
+      public string Rank { get; set; }
+      public string Comment { get; set; }
+
+      public Festival(int id, string name, string town, string link, string mail, string start, string deadline, string manager, string rank, string comment) {
+         Id = id;
+         Name = name;
+         Town = town;
+         Link = link;
+         Mail = mail;
+         Start = start;
+         Deadline = deadline;
+         Manager = manager;
+         Rank = rank;
+         Comment = comment;
+      }
+   }
+
    public class Town {
       public int Id { get; set; }
       public string Name { get; set; }
@@ -64,6 +112,47 @@
 
       public override string ToString() {
          return Name;
+      }
+   }
+
+   public class TownExt {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public int Distance { get; set; }
+      public string Size { get; set; }
+
+      public TownExt(int id, string name, int distance, string size) {
+         Id = id;
+         Name = name;
+         Distance = distance;
+         Size = size;
+      }
+
+      public override string ToString() {
+         return Name;
+      }
+   }
+
+   public class Pub {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public string Town { get; set; }
+      public string Rank { get; set; }
+      public string Manager { get; set; }
+      public string Mail { get; set; }
+      public string Link { get; set; }
+      public string Comment { get; set; }
+
+
+      public Pub(int id, string name, string town, string rank, string manager, string mail, string link, string comment) {
+         Id = id;
+         Name = name;
+         Town = town;
+         Rank = rank;
+         Manager = manager;
+         Mail = mail;
+         Link = link;
+         Comment = comment;
       }
    }
 

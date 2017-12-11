@@ -23,6 +23,7 @@
       /// the contents of this method with the code editor.
       /// </summary>
       private void InitializeComponent() {
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClub));
          this.addLink = new System.Windows.Forms.Button();
          this.emailTB = new System.Windows.Forms.TextBox();
          this.label9 = new System.Windows.Forms.Label();
@@ -47,9 +48,10 @@
          // 
          // addLink
          // 
-         this.addLink.Location = new System.Drawing.Point(363, 73);
+         this.addLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.addLink.Location = new System.Drawing.Point(463, 64);
          this.addLink.Name = "addLink";
-         this.addLink.Size = new System.Drawing.Size(92, 21);
+         this.addLink.Size = new System.Drawing.Size(115, 24);
          this.addLink.TabIndex = 4;
          this.addLink.Text = "Add link...";
          this.addLink.UseVisualStyleBackColor = true;
@@ -57,59 +59,68 @@
          // 
          // emailTB
          // 
-         this.emailTB.Location = new System.Drawing.Point(310, 110);
+         this.emailTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.emailTB.Location = new System.Drawing.Point(403, 94);
          this.emailTB.MaxLength = 128;
          this.emailTB.Name = "emailTB";
-         this.emailTB.Size = new System.Drawing.Size(145, 20);
+         this.emailTB.Size = new System.Drawing.Size(175, 22);
          this.emailTB.TabIndex = 6;
          // 
          // label9
          // 
          this.label9.AutoSize = true;
-         this.label9.Location = new System.Drawing.Point(255, 109);
+         this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label9.Location = new System.Drawing.Point(348, 97);
          this.label9.Name = "label9";
-         this.label9.Size = new System.Drawing.Size(38, 13);
+         this.label9.Size = new System.Drawing.Size(49, 16);
          this.label9.TabIndex = 17;
          this.label9.Text = "E-mail:";
          // 
          // label6
          // 
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(12, 42);
+         this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label6.Location = new System.Drawing.Point(25, 37);
          this.label6.Name = "label6";
-         this.label6.Size = new System.Drawing.Size(37, 13);
+         this.label6.Size = new System.Drawing.Size(44, 16);
          this.label6.TabIndex = 14;
          this.label6.Text = "Town:";
+         this.label6.Click += new System.EventHandler(this.label6_Click);
          // 
          // townCB
          // 
          this.townCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.townCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.townCB.FormattingEnabled = true;
-         this.townCB.Location = new System.Drawing.Point(97, 39);
+         this.townCB.Location = new System.Drawing.Point(75, 34);
          this.townCB.Name = "townCB";
-         this.townCB.Size = new System.Drawing.Size(247, 21);
+         this.townCB.Size = new System.Drawing.Size(382, 24);
          this.townCB.TabIndex = 1;
          // 
          // nameTB
          // 
-         this.nameTB.Location = new System.Drawing.Point(98, 12);
+         this.nameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.nameTB.Location = new System.Drawing.Point(75, 6);
          this.nameTB.MaxLength = 128;
          this.nameTB.Name = "nameTB";
-         this.nameTB.Size = new System.Drawing.Size(358, 20);
+         this.nameTB.Size = new System.Drawing.Size(503, 22);
          this.nameTB.TabIndex = 0;
          // 
          // label5
          // 
          this.label5.AutoSize = true;
-         this.label5.Location = new System.Drawing.Point(12, 12);
+         this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label5.Location = new System.Drawing.Point(21, 9);
          this.label5.Name = "label5";
-         this.label5.Size = new System.Drawing.Size(38, 13);
+         this.label5.Size = new System.Drawing.Size(48, 16);
          this.label5.TabIndex = 13;
          this.label5.Text = "Name:";
+         this.label5.Click += new System.EventHandler(this.label5_Click);
          // 
          // buttonCANCEL
          // 
-         this.buttonCANCEL.Location = new System.Drawing.Point(217, 228);
+         this.buttonCANCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.buttonCANCEL.Location = new System.Drawing.Point(322, 188);
          this.buttonCANCEL.Name = "buttonCANCEL";
          this.buttonCANCEL.Size = new System.Drawing.Size(75, 23);
          this.buttonCANCEL.TabIndex = 12;
@@ -119,7 +130,8 @@
          // 
          // buttonNEXT
          // 
-         this.buttonNEXT.Location = new System.Drawing.Point(298, 228);
+         this.buttonNEXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.buttonNEXT.Location = new System.Drawing.Point(422, 188);
          this.buttonNEXT.Name = "buttonNEXT";
          this.buttonNEXT.Size = new System.Drawing.Size(75, 23);
          this.buttonNEXT.TabIndex = 10;
@@ -129,7 +141,8 @@
          // 
          // buttonOK
          // 
-         this.buttonOK.Location = new System.Drawing.Point(379, 228);
+         this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.buttonOK.Location = new System.Drawing.Point(503, 188);
          this.buttonOK.Name = "buttonOK";
          this.buttonOK.Size = new System.Drawing.Size(75, 23);
          this.buttonOK.TabIndex = 11;
@@ -140,43 +153,49 @@
          // label3
          // 
          this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(15, 73);
+         this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label3.Location = new System.Drawing.Point(34, 68);
          this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(30, 13);
+         this.label3.Size = new System.Drawing.Size(35, 16);
          this.label3.TabIndex = 15;
          this.label3.Text = "Link:";
+         this.label3.Click += new System.EventHandler(this.label3_Click);
          // 
          // linkCB
          // 
          this.linkCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.linkCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.linkCB.FormattingEnabled = true;
-         this.linkCB.Location = new System.Drawing.Point(97, 73);
+         this.linkCB.Location = new System.Drawing.Point(75, 64);
          this.linkCB.Name = "linkCB";
-         this.linkCB.Size = new System.Drawing.Size(247, 21);
+         this.linkCB.Size = new System.Drawing.Size(382, 24);
          this.linkCB.TabIndex = 3;
          // 
          // commentTB
          // 
-         this.commentTB.Location = new System.Drawing.Point(97, 180);
+         this.commentTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.commentTB.Location = new System.Drawing.Point(75, 154);
          this.commentTB.MaxLength = 256;
          this.commentTB.Name = "commentTB";
-         this.commentTB.Size = new System.Drawing.Size(357, 20);
+         this.commentTB.Size = new System.Drawing.Size(503, 22);
          this.commentTB.TabIndex = 9;
          // 
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(15, 183);
+         this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label2.Location = new System.Drawing.Point(1, 157);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(54, 13);
+         this.label2.Size = new System.Drawing.Size(68, 16);
          this.label2.TabIndex = 19;
          this.label2.Text = "Comment:";
          // 
          // addTown
          // 
-         this.addTown.Location = new System.Drawing.Point(363, 39);
+         this.addTown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.addTown.Location = new System.Drawing.Point(463, 34);
          this.addTown.Name = "addTown";
-         this.addTown.Size = new System.Drawing.Size(92, 21);
+         this.addTown.Size = new System.Drawing.Size(115, 25);
          this.addTown.TabIndex = 2;
          this.addTown.Text = "Add town...";
          this.addTown.UseVisualStyleBackColor = true;
@@ -185,26 +204,29 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(15, 109);
+         this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label1.Location = new System.Drawing.Point(26, 97);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(36, 13);
+         this.label1.Size = new System.Drawing.Size(43, 16);
          this.label1.TabIndex = 16;
          this.label1.Text = "Rank:";
          // 
          // rankCB
          // 
          this.rankCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.rankCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.rankCB.FormattingEnabled = true;
-         this.rankCB.Location = new System.Drawing.Point(97, 109);
+         this.rankCB.Location = new System.Drawing.Point(75, 94);
          this.rankCB.Name = "rankCB";
-         this.rankCB.Size = new System.Drawing.Size(125, 21);
+         this.rankCB.Size = new System.Drawing.Size(267, 24);
          this.rankCB.TabIndex = 5;
          // 
          // addPerson
          // 
-         this.addPerson.Location = new System.Drawing.Point(364, 145);
+         this.addPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.addPerson.Location = new System.Drawing.Point(463, 123);
          this.addPerson.Name = "addPerson";
-         this.addPerson.Size = new System.Drawing.Size(92, 21);
+         this.addPerson.Size = new System.Drawing.Size(115, 24);
          this.addPerson.TabIndex = 8;
          this.addPerson.Text = "Add person...";
          this.addPerson.UseVisualStyleBackColor = true;
@@ -213,26 +235,28 @@
          // label4
          // 
          this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(16, 145);
+         this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label4.Location = new System.Drawing.Point(4, 127);
          this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(52, 13);
+         this.label4.Size = new System.Drawing.Size(65, 16);
          this.label4.TabIndex = 18;
          this.label4.Text = "Manager:";
          // 
          // managerCB
          // 
          this.managerCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.managerCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.managerCB.FormattingEnabled = true;
-         this.managerCB.Location = new System.Drawing.Point(98, 145);
+         this.managerCB.Location = new System.Drawing.Point(75, 124);
          this.managerCB.Name = "managerCB";
-         this.managerCB.Size = new System.Drawing.Size(247, 21);
+         this.managerCB.Size = new System.Drawing.Size(382, 24);
          this.managerCB.TabIndex = 7;
          // 
          // AddClub
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(473, 266);
+         this.ClientSize = new System.Drawing.Size(590, 219);
          this.Controls.Add(this.addPerson);
          this.Controls.Add(this.label4);
          this.Controls.Add(this.managerCB);
@@ -253,8 +277,11 @@
          this.Controls.Add(this.linkCB);
          this.Controls.Add(this.commentTB);
          this.Controls.Add(this.label2);
+         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.MaximizeBox = false;
          this.Name = "AddClub";
-         this.Text = "AddClub";
+         this.Text = "Add Club / Pub";
          this.ResumeLayout(false);
          this.PerformLayout();
 

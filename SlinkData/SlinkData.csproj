@@ -90,6 +90,36 @@
     <Compile Include="MySqlContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowFestivals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowFestivals.Designer.cs">
+      <DependentUpon>ShowFestivals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowLinks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowLinks.Designer.cs">
+      <DependentUpon>ShowLinks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowPeople.Designer.cs">
+      <DependentUpon>ShowPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowPubs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowPubs.Designer.cs">
+      <DependentUpon>ShowPubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowTowns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowTowns.Designer.cs">
+      <DependentUpon>ShowTowns.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddClub.resx">
       <DependentUpon>AddClub.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +148,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ShowFestivals.resx">
+      <DependentUpon>ShowFestivals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowLinks.resx">
+      <DependentUpon>ShowLinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowPeople.resx">
+      <DependentUpon>ShowPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowPubs.resx">
+      <DependentUpon>ShowPubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTowns.resx">
+      <DependentUpon>ShowTowns.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +190,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Database.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link-building-symbol-of-two-chain-links-union-with-a-plus-sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carlos2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-event.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-pointer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\man-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\place.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wifi.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
