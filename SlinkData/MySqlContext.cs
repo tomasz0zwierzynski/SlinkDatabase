@@ -10,9 +10,9 @@ using MySql.Data.MySqlClient;
 namespace SlinkData {
    public class MySqlContext {
 
-      private const string server = "s**l";
-      private const string database = "s**e";
-      private const string uid = "s**r";
+      private const string server = "***";
+      private const string database = "***";
+      private const string uid = "***";
       private const string password = "***";
       
       public string ConnectionString { get; }

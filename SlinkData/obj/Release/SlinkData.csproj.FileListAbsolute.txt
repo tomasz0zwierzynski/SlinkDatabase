@@ -18,3 +18,4 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.Sh
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.csproj.GenerateResource.Cache
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.exe
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.pdb
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.csprojResolveAssemblyReference.cache

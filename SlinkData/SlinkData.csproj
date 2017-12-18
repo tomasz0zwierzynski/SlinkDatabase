@@ -50,34 +50,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddClub.cs">
+    <Compile Include="AddForms\AddClub.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddClub.Designer.cs">
+    <Compile Include="AddForms\AddClub.Designer.cs">
       <DependentUpon>AddClub.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddFestival.cs">
+    <Compile Include="AddForms\AddFestival.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFestival.Designer.cs">
+    <Compile Include="AddForms\AddFestival.Designer.cs">
       <DependentUpon>AddFestival.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddLink.cs">
+    <Compile Include="AddForms\AddLink.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddLink.Designer.cs">
+    <Compile Include="AddForms\AddLink.Designer.cs">
       <DependentUpon>AddLink.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPerson.cs">
+    <Compile Include="AddForms\AddPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPerson.Designer.cs">
+    <Compile Include="AddForms\AddPerson.Designer.cs">
       <DependentUpon>AddPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddTown.cs">
+    <Compile Include="AddForms\AddTown.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTown.Designer.cs">
+    <Compile Include="AddForms\AddTown.Designer.cs">
       <DependentUpon>AddTown.cs</DependentUpon>
     </Compile>
     <Compile Include="DataTypes.cs" />
@@ -90,49 +90,69 @@
     <Compile Include="MySqlContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowFestivals.cs">
+    <Compile Include="Query.cs" />
+    <Compile Include="ShowForms\ShowFestivals.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowFestivals.Designer.cs">
+    <Compile Include="ShowForms\ShowFestivals.Designer.cs">
       <DependentUpon>ShowFestivals.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowLinks.cs">
+    <Compile Include="ShowForms\ShowLinks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowLinks.Designer.cs">
+    <Compile Include="ShowForms\ShowLinks.Designer.cs">
       <DependentUpon>ShowLinks.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowPeople.cs">
+    <Compile Include="ShowForms\ShowPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowPeople.Designer.cs">
+    <Compile Include="ShowForms\ShowPeople.Designer.cs">
       <DependentUpon>ShowPeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowPubs.cs">
+    <Compile Include="ShowForms\ShowPubs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowPubs.Designer.cs">
+    <Compile Include="ShowForms\ShowPubs.Designer.cs">
       <DependentUpon>ShowPubs.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowTowns.cs">
+    <Compile Include="ShowForms\ShowTowns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowTowns.Designer.cs">
+    <Compile Include="ShowForms\ShowTowns.Designer.cs">
       <DependentUpon>ShowTowns.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddClub.resx">
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="UpdateForms\UpdateTown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateForms\UpdateTown.Designer.cs">
+      <DependentUpon>UpdateTown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateForms\UpdateLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateForms\UpdateLink.Designer.cs">
+      <DependentUpon>UpdateLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateForms\UpdateFestival.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateForms\UpdateFestival.Designer.cs">
+      <DependentUpon>UpdateFestival.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddForms\AddClub.resx">
       <DependentUpon>AddClub.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddFestival.resx">
+    <EmbeddedResource Include="AddForms\AddFestival.resx">
       <DependentUpon>AddFestival.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddLink.resx">
+    <EmbeddedResource Include="AddForms\AddLink.resx">
       <DependentUpon>AddLink.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPerson.resx">
+    <EmbeddedResource Include="AddForms\AddPerson.resx">
       <DependentUpon>AddPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddTown.resx">
+    <EmbeddedResource Include="AddForms\AddTown.resx">
       <DependentUpon>AddTown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -148,20 +168,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ShowFestivals.resx">
+    <EmbeddedResource Include="ShowForms\ShowFestivals.resx">
       <DependentUpon>ShowFestivals.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowLinks.resx">
+    <EmbeddedResource Include="ShowForms\ShowLinks.resx">
       <DependentUpon>ShowLinks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowPeople.resx">
+    <EmbeddedResource Include="ShowForms\ShowPeople.resx">
       <DependentUpon>ShowPeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowPubs.resx">
+    <EmbeddedResource Include="ShowForms\ShowPubs.resx">
       <DependentUpon>ShowPubs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowTowns.resx">
+    <EmbeddedResource Include="ShowForms\ShowTowns.resx">
       <DependentUpon>ShowTowns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateForms\UpdateTown.resx">
+      <DependentUpon>UpdateTown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateForms\UpdateLink.resx">
+      <DependentUpon>UpdateLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateForms\UpdateFestival.resx">
+      <DependentUpon>UpdateFestival.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -227,6 +256,7 @@
   <ItemGroup>
     <None Include="Resources\wifi.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
