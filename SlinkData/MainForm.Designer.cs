@@ -61,9 +61,9 @@
          this.label2.Font = new System.Drawing.Font("Cambria Math", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.label2.Location = new System.Drawing.Point(2, 135);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(420, 73);
+         this.label2.Size = new System.Drawing.Size(71, 73);
          this.label2.TabIndex = 11;
-         this.label2.Text = "Client allows to add and/or show data ONLY! Data cannot be modified!";
+         this.label2.Text = "             ";
          // 
          // button4
          // 

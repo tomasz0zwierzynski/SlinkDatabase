@@ -78,5 +78,18 @@ namespace SlinkData {
 
          }
       }
+
+      private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+         int correpsondingId = ((Pub)dataGridView1.CurrentCell.OwningRow.DataBoundItem).Id;
+         UpdateClub updateClubForm = new UpdateClub(context, correpsondingId);
+         updateClubForm.ShowDialog();
+
+         if (updateClubForm.Return == 1) {
+            ShowPubs showPubsForm = new ShowPubs(context);
+            showPubsForm.Show();
+            Dispose();
+            Close();
+         }
+      }
    }
 }

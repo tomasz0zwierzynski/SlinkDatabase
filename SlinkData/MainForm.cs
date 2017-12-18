@@ -16,6 +16,10 @@ namespace SlinkData {
       public MainForm() {
          InitializeComponent();
          context = new MySqlContext();
+
+         ReleaseInfo ri = new ReleaseInfo();
+         ri.Show();
+
       }
 
       private void testConnection_Click(object sender, EventArgs e) {

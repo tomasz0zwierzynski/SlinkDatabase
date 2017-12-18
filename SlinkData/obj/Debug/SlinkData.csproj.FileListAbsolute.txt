@@ -22,3 +22,6 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.Show
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.UpdateFestival.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.UpdateLink.resources
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.UpdateTown.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.UpdateClub.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.UpdatePerson.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Debug\SlinkData.ReleaseInfo.resources

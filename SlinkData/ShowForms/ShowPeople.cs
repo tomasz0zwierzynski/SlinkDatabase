@@ -87,7 +87,19 @@ namespace SlinkData {
 
          }
       }
-      
+
+      private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+         int correpsondingId = ((PersonExt)dataGridView1.CurrentCell.OwningRow.DataBoundItem).Id;
+         UpdatePerson updatePersonForm = new UpdatePerson(context, correpsondingId);
+         updatePersonForm.ShowDialog();
+
+         if (updatePersonForm.Return == 1) {
+            ShowPeople showPeopleForm = new ShowPeople(context);
+            showPeopleForm.Show();
+            Dispose();
+            Close();
+         }
+      }
    }
    
 }

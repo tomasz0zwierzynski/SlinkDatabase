@@ -14,7 +14,7 @@ namespace SlinkData {
       private const string database = "***";
       private const string uid = "***";
       private const string password = "***";
-      
+
       public string ConnectionString { get; }
       private string lastError;
 

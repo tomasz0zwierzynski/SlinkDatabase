@@ -19,3 +19,9 @@ F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.cs
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.exe
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.pdb
 F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.csprojResolveAssemblyReference.cache
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.ReleaseInfo.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.UpdatePerson.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.UpdateClub.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.UpdateTown.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.UpdateLink.resources
+F:\Programming\vs_proj\slinkwood_db\SlinkData\SlinkData\obj\Release\SlinkData.UpdateFestival.resources
