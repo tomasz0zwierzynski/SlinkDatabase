@@ -1,7 +1,39 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SlinkData.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ShowOnStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowPubsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1000, 400</Value>
+    </Setting>
+    <Setting Name="ShowPubsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="ShowFestivalsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1000, 400</Value>
+    </Setting>
+    <Setting Name="ShowFestivalsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="ShowPeopleSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1000, 400</Value>
+    </Setting>
+    <Setting Name="ShowPeopleLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="ShowTownsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1000, 400</Value>
+    </Setting>
+    <Setting Name="ShowTownsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="ShowLinksSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1000, 400</Value>
+    </Setting>
+    <Setting Name="ShowLinksLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

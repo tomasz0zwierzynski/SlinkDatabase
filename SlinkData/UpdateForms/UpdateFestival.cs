@@ -10,24 +10,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class UpdateFestival : Form {
+   public partial class UpdateFestival : ContextedForm {
 
-      private MySqlContext context;
-      private List<Link> links;
-      private List<Rank> ranks;
-      private List<Town> towns;
-      private List<Person> people;
+      private List<LinkString> links;
+      private List<RankString> ranks;
+      private List<TownString> towns;
+      private List<PersonString> people;
 
       private int selectedFestivalId;
       FestivalRaw selectedFestival;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
 
-      public UpdateFestival(MySqlContext _context, int _selectedFestivalId) {
+      public UpdateFestival(MySqlContext _context, int _selectedFestivalId) :base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
          selectedFestivalId = _selectedFestivalId;
          selectedFestival = readFestivalOf(selectedFestivalId);
@@ -37,64 +32,28 @@ namespace SlinkData {
          emailTB.Text = selectedFestival.Mail;
          commentTB.Text = selectedFestival.Comment;
 
-         links = new List<Link>();
-         links.Add(new Link(0, "", "", "")); //A NULL link
-         readLinks();
-         Link currentLink = null;
-         foreach (Link obj in links) {
-            linkCB.Items.Add(obj);
-            if (obj.Id == selectedFestival.Link) {
-               currentLink = obj;
-            }
+         try {
+            links = LinkGet.Read(context, true);
+            ranks = RankGet.Read(context, false);
+            towns = TownGet.Read(context, true);
+            people = PersonGet.Read(context, true);
          }
-         if( currentLink != null) {
-            linkCB.SelectedIndex = linkCB.Items.IndexOf(currentLink);
-         }
-         
-                  
-         ranks = new List<Rank>();
-         readRanks();
-         Rank currentRank = null;
-         foreach (Rank obj in ranks) {
-            rankCB.Items.Add(obj);
-            if(obj.Id == selectedFestival.Rank) {
-               currentRank = obj;
-            }
-         }
-         rankCB.SelectedIndex = rankCB.Items.IndexOf(currentRank);
-
-         towns = new List<Town>();
-         towns.Add(new Town(0, "")); //A NULL TOWN
-         readTowns();
-         Town currentTown = null;
-         foreach (Town obj in towns) {
-            townCB.Items.Add(obj);
-            if (obj.Id == selectedFestival.Town) {
-               currentTown = obj;
-            }
-         }
-         if ( currentTown != null) {
-            townCB.SelectedIndex = townCB.Items.IndexOf(currentTown);
+         catch (Exception ex) {
+            MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
+            Return = -2;
+            this.Close();
          }
 
-         people = new List<Person>();
-         people.Add(new Person(0, "", "", "", "")); //A NULL person
-         readPeople();
-         Person currentPerson = null;
-         foreach (Person obj in people) {
-            managerCB.Items.Add(obj);
-            if (obj.Id == selectedFestival.Manager) {
-               currentPerson = obj;
-            }
-         }
-         if (currentPerson != null) {
-            managerCB.SelectedIndex = managerCB.Items.IndexOf(currentPerson);
-         }
+         GenericForm.FillComboBox(linkCB, links, selectedFestival.Link);
+         GenericForm.FillComboBox(rankCB, ranks, selectedFestival.Rank);
+         GenericForm.FillComboBox(townCB, towns, selectedFestival.Town);
+         GenericForm.FillComboBox(managerCB, people, selectedFestival.Manager);
 
          if (selectedFestival.Deadline != "") {
             deadlineDP.Value = DateTime.Parse(selectedFestival.Deadline);
             deadlineNull.Checked = false;
-         }else {
+         }
+         else {
             deadlineNull.Checked = true;
          }
 
@@ -105,7 +64,6 @@ namespace SlinkData {
          else {
             startNull.Checked = true;
          }
-
 
       }
 
@@ -121,38 +79,14 @@ namespace SlinkData {
 
                while (reader.Read()) {
                   string name = reader.GetString(1);
-                  int town = 0;
-                  if (!reader.IsDBNull(2)) {
-                     town = reader.GetInt32(2);
-                  }
-                  int link = 0;
-                  if (!reader.IsDBNull(3)) {
-                     link = reader.GetInt32(3);
-                  }
-                  string mail = "";
-                  if (!reader.IsDBNull(4)) {
-                     mail = reader.GetString(4);
-                  }
-                  string start = "";
-                  if (!reader.IsDBNull(5)) {
-                     start = reader.GetString(5);
-                  }
-                  string deadline = "";
-                  if (!reader.IsDBNull(6)) {
-                     deadline = reader.GetString(6);
-                  }
-                  int manager = 0;
-                  if (!reader.IsDBNull(7)) {
-                     manager = reader.GetInt32(7);
-                  }
-                  int rank = 0;
-                  if (!reader.IsDBNull(8)) {
-                     rank = reader.GetInt32(8);
-                  }
-                  string comment = "";
-                  if (!reader.IsDBNull(9)) {
-                     comment = reader.GetString(9);
-                  }
+                  int town = (!reader.IsDBNull(2)) ? reader.GetInt32(2) : 0;
+                  int link = (!reader.IsDBNull(3)) ? reader.GetInt32(3) : 0;
+                  string mail = (!reader.IsDBNull(4)) ? reader.GetString(4) : "";
+                  string start = (!reader.IsDBNull(5)) ? reader.GetString(5) : "";
+                  string deadline = (!reader.IsDBNull(6)) ? reader.GetString(6) : "";
+                  int manager = (!reader.IsDBNull(7)) ? reader.GetInt32(7) : 0;
+                  int rank = (!reader.IsDBNull(8)) ? reader.GetInt32(8) : 0;
+                  string comment = (!reader.IsDBNull(9)) ? reader.GetString(9) : "";
 
                   festival = new FestivalRaw(id, name, town, link, mail, start, deadline, manager, rank, comment);
                }
@@ -169,137 +103,7 @@ namespace SlinkData {
          
          return festival;
       }
-
-      private void readLinks() { //Proper select must be queued -> instead of linkType ID -> linkType name
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectLinks, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string url = reader.GetString(1);
-                  string comment = "";
-                  if (!reader.IsDBNull(2)) {
-                     comment = reader.GetString(2);
-                  }
-                  string link_type = reader.GetString(3);
-                  links.Add(new Link(id, link_type, url, comment));
-               }
-
-               reader.Close();
-               connection.Close();
-            }
-            catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-
-         }
-      }
-
-      private void readRanks() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectRanks, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string rank_name = reader.GetString(1);
-                  int rank_value = reader.GetInt32(2);
-                  string comment = "";
-                  if (!reader.IsDBNull(3)) {
-                     comment = reader.GetString(3);
-                  }
-                  ranks.Add(new Rank(id, rank_name, rank_value, comment));
-               }
-
-               reader.Close();
-               connection.Close();
-            }
-            catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-         }
-      }
-
-      private void readTowns() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectTowns, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string name = reader.GetString(1);
-                  towns.Add(new Town(id, name));
-               }
-
-               reader.Close();
-               connection.Close();
-            }
-            catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-         }
-      }
-
-      private void readPeople() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectPeople, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string forename = "";
-                  if (!reader.IsDBNull(1)) {
-                     forename = reader.GetString(1);
-                  }
-                  string surname = "";
-                  if (!reader.IsDBNull(2)) {
-                     surname = reader.GetString(2);
-                  }
-                  string alias = "";
-                  if (!reader.IsDBNull(3)) {
-                     alias = reader.GetString(3);
-                  }
-                  string comment = "";
-                  if (!reader.IsDBNull(4)) {
-                     comment = reader.GetString(4);
-                  }
-                  people.Add(new Person(id, forename, surname, alias, comment));
-               }
-
-               reader.Close();
-               connection.Close();
-            }
-            catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-         }
-      }
-
+      
       private bool updateFestival() {
          if (nameTB.Text == "") {
             MessageBox.Show("Name must be filled!");
@@ -307,62 +111,29 @@ namespace SlinkData {
          }
 
          string name = nameTB.Text;
-         int town = ((Town)townCB.SelectedItem).Id;
-         int link = ((Link)linkCB.SelectedItem).Id;
-         int rank = ((Rank)rankCB.SelectedItem).Id;
+         int town = ((TownString)townCB.SelectedItem).Id;
+         int link = ((LinkString)linkCB.SelectedItem).Id;
+         int rank = ((RankString)rankCB.SelectedItem).Id;
          string email = emailTB.Text;
-         int manager = ((Person)managerCB.SelectedItem).Id;
+         int manager = ((PersonString)managerCB.SelectedItem).Id;
          string comment = commentTB.Text;
-         string deadline = deadlineDP.Value.ToString("yyyy-MM-dd");
-         string start = startDP.Value.ToString("yyyy-MM-dd");
+         string deadline = deadlineNull.Checked ? "" : deadlineDP.Value.ToString("yyyy-MM-dd");
+         string start = startNull.Checked ? "" : startDP.Value.ToString("yyyy-MM-dd");
 
          //Update query should be
          using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
             MySqlCommand command = new MySqlCommand(Query.updateFestival, connection);
 
-            command.Parameters.AddWithValue("@id", selectedFestivalId);
-            command.Parameters.AddWithValue("@name", name);
-            if (town == 0) {
-               command.Parameters.AddWithValue("@town", DBNull.Value);
-            }else {
-               command.Parameters.AddWithValue("@town", town);
-            }
-            if (link == 0) {
-               command.Parameters.AddWithValue("@link", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@link", link);
-            }
-            command.Parameters.AddWithValue("@rank", rank);
-            if (email == "") {
-               command.Parameters.AddWithValue("@email", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@email", email);
-            }
-            if (manager == 0) {
-               command.Parameters.AddWithValue("@manager", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@manager", manager);
-            }
-            if (comment == "") {
-               command.Parameters.AddWithValue("@comment", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@comment", comment);
-            }
-            if (deadlineNull.Checked) {
-               command.Parameters.AddWithValue("@application", DBNull.Value);
-            }else {
-               command.Parameters.AddWithValue("@application", deadline);
-            }
-            if (startNull.Checked) {
-               command.Parameters.AddWithValue("@start", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@start", start);
-            }
+            Parser.AddWithValue(command, "@id", selectedFestivalId);
+            Parser.AddWithValue(command, "@name", name);
+            Parser.AddWithValue(command, "@town", town);
+            Parser.AddWithValue(command, "@link", link);
+            Parser.AddWithValue(command, "@rank", rank);
+            Parser.AddWithValue(command, "@email", email);
+            Parser.AddWithValue(command, "@manager", manager);
+            Parser.AddWithValue(command, "@comment", comment);
+            Parser.AddWithValue(command, "@application", deadline);
+            Parser.AddWithValue(command, "@start", start);
 
             try {
                connection.Open();
@@ -378,63 +149,15 @@ namespace SlinkData {
       }
 
       private void addTown_Click(object sender, EventArgs e) {
-         AddTown addTownForm = new AddTown(context);
-         addTownForm.ShowDialog();
-         long townId = addTownForm.LastInsertId;
-         int respond = addTownForm.Return;
-         addTownForm.Dispose();
-
-         if (respond == 1 || respond == 2) {
-            //added
-            towns.Clear();
-            readTowns();
-            var LastAddedLink = towns.OrderByDescending(item => item.Id).First();
-            townCB.Items.Clear();
-            foreach (object obj in towns) {
-               townCB.Items.Add(obj);
-            }
-            townCB.SelectedItem = LastAddedLink;
-         }
+         GenericForm.ShowForm<TownString, AddTown, TownGet>(context, towns, townCB);
       }
 
       private void addLink_Click(object sender, EventArgs e) {
-         AddLink addLinkForm = new AddLink(context);
-         addLinkForm.ShowDialog();
-         long linkId = addLinkForm.LastInsertId;
-         int respond = addLinkForm.Return;
-         addLinkForm.Dispose();
-
-         if (respond == 1 || respond == 2) {
-            //added
-            links.Clear();
-            readLinks();
-            var LastAddedLink = links.OrderByDescending(item => item.Id).First();
-            linkCB.Items.Clear();
-            foreach (object obj in links) {
-               linkCB.Items.Add(obj);
-            }
-            linkCB.SelectedItem = LastAddedLink;
-         }
+         GenericForm.ShowForm<LinkString, AddLink, LinkGet>(context, links, linkCB);
       }
 
       private void addPerson_Click(object sender, EventArgs e) {
-         AddPerson addPersonForm = new AddPerson(context);
-         addPersonForm.ShowDialog();
-         long personId = addPersonForm.LastInsertId;
-         int respond = addPersonForm.Return;
-         addPersonForm.Dispose();
-
-         if (respond == 1 || respond == 2) {
-            //added
-            people.Clear();
-            readPeople();
-            var LastAddedLink = people.OrderByDescending(item => item.Id).First();
-            managerCB.Items.Clear();
-            foreach (object obj in people) {
-               managerCB.Items.Add(obj);
-            }
-            managerCB.SelectedItem = LastAddedLink;
-         }
+         GenericForm.ShowForm<PersonString, AddPerson, PersonGet>(context, people, managerCB);
       }
 
       private void buttonOK_Click(object sender, EventArgs e) {

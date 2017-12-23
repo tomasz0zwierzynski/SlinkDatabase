@@ -11,18 +11,14 @@ using System.Windows.Forms;
 
 namespace SlinkData {
    
-   public partial class ShowPeople : Form {
+   public partial class ShowPeople : ContextedForm {
       
-      private MySqlContext context;
+
       private SortableBindingList<PersonExt> people;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
 
-      public ShowPeople(MySqlContext _context) {
+      public ShowPeople(MySqlContext _context) : base(_context){
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
          people = new SortableBindingList<PersonExt>();
          readPeople();
@@ -47,31 +43,13 @@ namespace SlinkData {
 
                while (reader.Read()) {
                   int id = reader.GetInt32(0);
-                  string name = reader.GetString(1);
-                  string phonenumber = "";
-                  if (!reader.IsDBNull(2)) {
-                     phonenumber = reader.GetString(2);
-                  }
-                  string mail = "";
-                  if (!reader.IsDBNull(3)) {
-                     mail = reader.GetString(3);
-                  }
-                  string comment = "";
-                  if (!reader.IsDBNull(4)) {
-                     comment = reader.GetString(4);
-                  }
-                  string link = "";
-                  if (!reader.IsDBNull(5)) {
-                     link = reader.GetString(5);
-                  }
-                  string occupy1 = "";
-                  if (!reader.IsDBNull(6)) {
-                     occupy1 = reader.GetString(6);
-                  }
-                  string occupy2 = "";
-                  if (!reader.IsDBNull(7)) {
-                     occupy2 = reader.GetString(7);
-                  }
+                  string name = (!reader.IsDBNull(1)) ? reader.GetString(1) : "";
+                  string phonenumber = (!reader.IsDBNull(2)) ? reader.GetString(2) : "";
+                  string mail = (!reader.IsDBNull(3)) ? reader.GetString(3) : "";
+                  string comment = (!reader.IsDBNull(4)) ? reader.GetString(4) : "";
+                  string link = (!reader.IsDBNull(5)) ? reader.GetString(5) : "";
+                  string occupy1 = (!reader.IsDBNull(6)) ? reader.GetString(6) : "";
+                  string occupy2 = (!reader.IsDBNull(7)) ? reader.GetString(7) : "";
 
                   people.Add(new PersonExt(id, name, phonenumber, mail, comment, link, occupy1,occupy2));
                }
@@ -99,6 +77,21 @@ namespace SlinkData {
             Dispose();
             Close();
          }
+      }
+
+      private void ShowPeople_Load(object sender, EventArgs e) {
+         Size = (Size)Properties.Settings.Default["ShowPeopleSize"];
+         Location = (Point)Properties.Settings.Default["ShowPeopleLocation"];
+      }
+
+      private void ShowPeople_SizeChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowPeopleSize"] = Size;
+         Properties.Settings.Default.Save();
+      }
+
+      private void ShowPeople_LocationChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowPeopleLocation"] = Location;
+         Properties.Settings.Default.Save();
       }
    }
    

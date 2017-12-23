@@ -10,18 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class ShowTowns : Form {
+   public partial class ShowTowns : ContextedForm {
 
-      private MySqlContext context;
+
       private SortableBindingList<TownExt> towns;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
-
-      public ShowTowns(MySqlContext _context) {
+      
+      public ShowTowns(MySqlContext _context) : base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
+
 
          towns = new SortableBindingList<TownExt>();
          readTowns();
@@ -45,12 +42,10 @@ namespace SlinkData {
 
                while (reader.Read()) {
                   int id = reader.GetInt32(0);
-                  string name = reader.GetString(1);
-                  int distance = 0;
-                  if (!reader.IsDBNull(2)) {
-                     distance = reader.GetInt32(2);
-                  }
-                  string size = reader.GetString(3);
+                  string name = (!reader.IsDBNull(1)) ? reader.GetString(1) : "";
+                  int distance = (!reader.IsDBNull(2)) ? reader.GetInt32(2) : 0;
+                  string size = (!reader.IsDBNull(3)) ? reader.GetString(3) : "";
+
                   towns.Add(new TownExt(id, name, distance, size));
                }
 
@@ -77,6 +72,21 @@ namespace SlinkData {
             Dispose();
             Close();
          }
+      }
+
+      private void ShowTowns_Load(object sender, EventArgs e) {
+         Size = (Size)Properties.Settings.Default["ShowTownsSize"];
+         Location = (Point)Properties.Settings.Default["ShowTownsLocation"];
+      }
+
+      private void ShowTowns_SizeChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowTownsSize"] = Size;
+         Properties.Settings.Default.Save();
+      }
+
+      private void ShowTowns_LocationChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowTownsLocation"] = Location;
+         Properties.Settings.Default.Save();
       }
    }
 }

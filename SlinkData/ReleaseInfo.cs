@@ -17,7 +17,9 @@ namespace SlinkData {
          this.labelCopyright.Text = AssemblyCopyright;
          this.labelCompanyName.Text = AssemblyCompany;
          this.textBoxDescription.Text = AssemblyDescription;*/
-      }
+
+         checkBox1.Checked = (bool)Properties.Settings.Default["ShowOnStart"];
+         }
 
       #region Assembly Attribute Accessors
 
@@ -82,7 +84,13 @@ namespace SlinkData {
       #endregion
 
       private void okButton_Click(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowOnStart"] = checkBox1.Checked;
+         Properties.Settings.Default.Save();
          Close();
+      }
+
+      private void tableLayoutPanel_Paint(object sender, PaintEventArgs e) {
+
       }
    }
 }

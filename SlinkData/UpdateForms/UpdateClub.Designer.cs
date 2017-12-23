@@ -43,6 +43,8 @@
          this.addPerson = new System.Windows.Forms.Button();
          this.label4 = new System.Windows.Forms.Label();
          this.managerCB = new System.Windows.Forms.ComboBox();
+         this.facebookTB = new System.Windows.Forms.TextBox();
+         this.label7 = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
          // addLink
@@ -59,7 +61,7 @@
          // emailTB
          // 
          this.emailTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.emailTB.Location = new System.Drawing.Point(403, 94);
+         this.emailTB.Location = new System.Drawing.Point(403, 122);
          this.emailTB.MaxLength = 128;
          this.emailTB.Name = "emailTB";
          this.emailTB.Size = new System.Drawing.Size(175, 22);
@@ -69,7 +71,7 @@
          // 
          this.label9.AutoSize = true;
          this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.label9.Location = new System.Drawing.Point(348, 97);
+         this.label9.Location = new System.Drawing.Point(348, 125);
          this.label9.Name = "label9";
          this.label9.Size = new System.Drawing.Size(49, 16);
          this.label9.TabIndex = 17;
@@ -84,7 +86,6 @@
          this.label6.Size = new System.Drawing.Size(44, 16);
          this.label6.TabIndex = 14;
          this.label6.Text = "Town:";
-         this.label6.Click += new System.EventHandler(this.label6_Click);
          // 
          // townCB
          // 
@@ -114,12 +115,11 @@
          this.label5.Size = new System.Drawing.Size(48, 16);
          this.label5.TabIndex = 13;
          this.label5.Text = "Name:";
-         this.label5.Click += new System.EventHandler(this.label5_Click);
          // 
          // buttonCANCEL
          // 
          this.buttonCANCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.buttonCANCEL.Location = new System.Drawing.Point(322, 188);
+         this.buttonCANCEL.Location = new System.Drawing.Point(322, 216);
          this.buttonCANCEL.Name = "buttonCANCEL";
          this.buttonCANCEL.Size = new System.Drawing.Size(75, 23);
          this.buttonCANCEL.TabIndex = 12;
@@ -130,7 +130,7 @@
          // buttonOK
          // 
          this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.buttonOK.Location = new System.Drawing.Point(422, 188);
+         this.buttonOK.Location = new System.Drawing.Point(422, 216);
          this.buttonOK.Name = "buttonOK";
          this.buttonOK.Size = new System.Drawing.Size(156, 23);
          this.buttonOK.TabIndex = 11;
@@ -147,7 +147,6 @@
          this.label3.Size = new System.Drawing.Size(35, 16);
          this.label3.TabIndex = 15;
          this.label3.Text = "Link:";
-         this.label3.Click += new System.EventHandler(this.label3_Click);
          // 
          // linkCB
          // 
@@ -162,7 +161,7 @@
          // commentTB
          // 
          this.commentTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.commentTB.Location = new System.Drawing.Point(75, 154);
+         this.commentTB.Location = new System.Drawing.Point(75, 182);
          this.commentTB.MaxLength = 256;
          this.commentTB.Name = "commentTB";
          this.commentTB.Size = new System.Drawing.Size(503, 22);
@@ -172,7 +171,7 @@
          // 
          this.label2.AutoSize = true;
          this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.label2.Location = new System.Drawing.Point(1, 157);
+         this.label2.Location = new System.Drawing.Point(1, 185);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(68, 16);
          this.label2.TabIndex = 19;
@@ -193,7 +192,7 @@
          // 
          this.label1.AutoSize = true;
          this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.label1.Location = new System.Drawing.Point(26, 97);
+         this.label1.Location = new System.Drawing.Point(26, 125);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(43, 16);
          this.label1.TabIndex = 16;
@@ -204,7 +203,7 @@
          this.rankCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.rankCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.rankCB.FormattingEnabled = true;
-         this.rankCB.Location = new System.Drawing.Point(75, 94);
+         this.rankCB.Location = new System.Drawing.Point(75, 122);
          this.rankCB.Name = "rankCB";
          this.rankCB.Size = new System.Drawing.Size(267, 24);
          this.rankCB.TabIndex = 5;
@@ -212,7 +211,7 @@
          // addPerson
          // 
          this.addPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.addPerson.Location = new System.Drawing.Point(463, 123);
+         this.addPerson.Location = new System.Drawing.Point(463, 151);
          this.addPerson.Name = "addPerson";
          this.addPerson.Size = new System.Drawing.Size(115, 24);
          this.addPerson.TabIndex = 8;
@@ -224,7 +223,7 @@
          // 
          this.label4.AutoSize = true;
          this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-         this.label4.Location = new System.Drawing.Point(4, 127);
+         this.label4.Location = new System.Drawing.Point(4, 155);
          this.label4.Name = "label4";
          this.label4.Size = new System.Drawing.Size(65, 16);
          this.label4.TabIndex = 18;
@@ -235,17 +234,38 @@
          this.managerCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.managerCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
          this.managerCB.FormattingEnabled = true;
-         this.managerCB.Location = new System.Drawing.Point(75, 124);
+         this.managerCB.Location = new System.Drawing.Point(75, 152);
          this.managerCB.Name = "managerCB";
          this.managerCB.Size = new System.Drawing.Size(382, 24);
          this.managerCB.TabIndex = 7;
+         // 
+         // facebookTB
+         // 
+         this.facebookTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.facebookTB.Location = new System.Drawing.Point(75, 94);
+         this.facebookTB.MaxLength = 128;
+         this.facebookTB.Name = "facebookTB";
+         this.facebookTB.Size = new System.Drawing.Size(503, 22);
+         this.facebookTB.TabIndex = 22;
+         // 
+         // label7
+         // 
+         this.label7.AutoSize = true;
+         this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+         this.label7.Location = new System.Drawing.Point(1, 97);
+         this.label7.Name = "label7";
+         this.label7.Size = new System.Drawing.Size(73, 16);
+         this.label7.TabIndex = 23;
+         this.label7.Text = "Facebook:";
          // 
          // UpdateClub
          // 
          this.AcceptButton = this.buttonOK;
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(590, 219);
+         this.ClientSize = new System.Drawing.Size(590, 245);
+         this.Controls.Add(this.facebookTB);
+         this.Controls.Add(this.label7);
          this.Controls.Add(this.addPerson);
          this.Controls.Add(this.label4);
          this.Controls.Add(this.managerCB);
@@ -296,5 +316,7 @@
       private System.Windows.Forms.Button addPerson;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.ComboBox managerCB;
+      private System.Windows.Forms.TextBox facebookTB;
+      private System.Windows.Forms.Label label7;
    }
 }

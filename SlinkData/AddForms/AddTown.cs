@@ -10,59 +10,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class AddTown : Form {
+   public partial class AddTown : ContextedForm {
 
-      private MySqlContext context;
-      private List<TownSize> townSizes;
+      private List<TownSizeString> townSizes;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
 
-      public AddTown(MySqlContext _context) {
+      public AddTown(MySqlContext _context) : base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
-         townSizes = new List<TownSize>();
-         readTownSizes();
-
-         foreach (object obj in townSizes) {
-            comboBox.Items.Add(obj);
+         try {
+            townSizes = TownSizeGet.Read(context, false);
+         }catch(Exception ex) {
+            MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
+            Return = -2;
+            this.Close();
          }
 
-         comboBox.SelectedIndex = 0;
-      }
+         GenericForm.FillComboBox(comboBox, townSizes, true);
 
-      private void readTownSizes() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectTownSizes, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string size_name = reader.GetString(1);
-                  int lower_limit = reader.GetInt32(2);
-                  int upper_limit = reader.GetInt32(3);
-                  string comment = "";
-                  if (!reader.IsDBNull(4)) {
-                     comment = reader.GetString(4);
-                  }
-                  townSizes.Add(new TownSize(id, size_name, lower_limit, upper_limit, comment));
-               }
-
-               reader.Close();
-               connection.Close();
-            }
-            catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-         }
       }
 
       private void addLink_FormClosed(object sender, FormClosedEventArgs e) {
@@ -88,21 +53,16 @@ namespace SlinkData {
          }
 
          string name = nameTB.Text;
-         int town_size = ((TownSize)comboBox.SelectedItem).Id;
+         int town_size = ((TownSizeString)comboBox.SelectedItem).Id;
          int distance = Decimal.ToInt32(distanceTB.Value);
          string comment = commentTB.Text;
 
          using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
             MySqlCommand command = new MySqlCommand(Query.insertIntoTowns, connection);
-            command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@size", town_size);
-            command.Parameters.AddWithValue("@distance", distance);
-            if (comment == "") {
-               command.Parameters.AddWithValue("@comment", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@comment", comment);
-            }
+            Parser.AddWithValue(command, "@name", name);
+            Parser.AddWithValue(command, "@size", town_size);
+            Parser.AddWithValue(command, "@distance", distance);
+            Parser.AddWithValue(command, "@comment", comment);
 
             try {
                connection.Open();

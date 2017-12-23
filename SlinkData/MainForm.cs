@@ -17,8 +17,12 @@ namespace SlinkData {
          InitializeComponent();
          context = new MySqlContext();
 
-         ReleaseInfo ri = new ReleaseInfo();
-         ri.Show();
+         if ((bool)Properties.Settings.Default["ShowOnStart"]) {
+            ReleaseInfo ri = new ReleaseInfo();
+            ri.Show();
+         }
+
+        
 
       }
 
@@ -32,8 +36,17 @@ namespace SlinkData {
       }
 
       private void addLink_Click(object sender, EventArgs e) {
-         AddLink addLinkForm = new AddLink(context);
-         addLinkForm.ShowDialog();
+         miniForm();
+
+         AddLink addLinkForm;
+         try {
+            addLinkForm = new AddLink(context);
+            addLinkForm.ShowDialog();
+         } catch {
+            maxiForm();
+            return;
+         }
+
 
          int row_counter = 0;
          while (addLinkForm.Return == 2) {
@@ -59,9 +72,13 @@ namespace SlinkData {
             label1.Text = row_counter.ToString() + " links added.";
          }
 
+
+         maxiForm();
       }
 
       private void addTown_Click(object sender, EventArgs e) {
+         miniForm();
+
          AddTown addTownForm = new AddTown(context);
          addTownForm.ShowDialog();
 
@@ -89,9 +106,13 @@ namespace SlinkData {
          else if (respond == -2) {
             label1.Text = row_counter.ToString() + " towns added.";
          }
+
+         maxiForm();
       }
 
       private void addPerson_Click(object sender, EventArgs e) {
+         miniForm();
+
          AddPerson addPersonForm = new AddPerson(context);
          addPersonForm.ShowDialog();
 
@@ -119,9 +140,13 @@ namespace SlinkData {
          else if (respond == -2) {
             label1.Text = row_counter.ToString() + " people added.";
          }
+
+         maxiForm();
       }
 
       private void addClub_Click(object sender, EventArgs e) {
+         miniForm();
+
          AddClub addClubForm = new AddClub(context);
          addClubForm.ShowDialog();
 
@@ -149,9 +174,13 @@ namespace SlinkData {
          else if (respond == -2) {
             label1.Text = row_counter.ToString() + " clubs added.";
          }
+
+         maxiForm();
       }
 
       private void addFestival_Click(object sender, EventArgs e) {
+         miniForm();
+
          AddFestival addFestivalForm = new AddFestival(context);
          addFestivalForm.ShowDialog();
 
@@ -179,6 +208,8 @@ namespace SlinkData {
          else if (respond == -2) {
             label1.Text = row_counter.ToString() + " festivals added.";
          }
+
+         maxiForm();
       }
 
       private void showLinks_Click(object sender, EventArgs e) {
@@ -206,5 +237,34 @@ namespace SlinkData {
          showFestivalsForm.Show();
       }
 
+      private int formWidth = 451;
+      private int formHeight = 706;
+      private int positionX = 0;
+      private int positionY = 0;
+
+
+      private void miniForm() {
+         positionX = Location.X;
+         positionY = Location.Y;
+         Width = 0;
+         Height = 0;
+         Location = new Point(0, Screen.PrimaryScreen.Bounds.Height);
+      }
+
+      private void maxiForm() {
+         Width = formWidth;
+         Height = formHeight;
+         Location = new Point(positionX, positionY);
+
+      }
+
+      private void about_Click(object sender, EventArgs e) {
+         ReleaseInfo ri = new ReleaseInfo();
+         ri.ShowDialog();
+      }
+
+      private void CustomQuery_Click(object sender, EventArgs e) {
+
+      }
    }
 }

@@ -118,18 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>Version 0.2 is up.
+    <value>CURRENT VERSION NOTES:
+Version 0.3 is up.
+
+Minor changes:
+- application remembers size and position of all forms
+- resized main menu form
+
+HISTORY VERSIONS NOTES:
+Version 0.2 is up.
 
 Major changes:
 - all rows in any table can be now modified (double click on table cell)
-- added Release Info Box show on run
+- added Release Info Box show on run checkbox
 
 Minor changes:
 - better sizes for "Show" forms
 - data in add and update forms can be quickly applied by hitting Enter
+- Main Menu form is now minimalizing every time "Add..." form is shown
+- double click on links or e-mails in "Show Clubs" Form opens default web browser
 
 Known issues:
 - Clicking on link in "Show" forms should redirect to site/mail
-</value>
+- Application will crash if connection to database fails (try catch blocks)
+- Sorting clubs by distance should be possible
+- Custom SQL queries parser should be included</value>
   </data>
 </root>

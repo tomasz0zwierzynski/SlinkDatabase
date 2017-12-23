@@ -11,57 +11,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class AddLink : Form {
+   public partial class AddLink : ContextedForm {
 
-      private MySqlContext context;
-      private List<LinkType> linkTypes;
+      private List<LinkTypeString> linkTypes;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
 
-      public AddLink(MySqlContext _context) {
+      public AddLink(MySqlContext _context) : base(_context){
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
-         linkTypes = new List<LinkType>();
-         readLinkTypes();
-
-         foreach(object obj in linkTypes) {
-            comboBox.Items.Add(obj);
+         try {
+            linkTypes = LinkTypeGet.Read(context, false);
+         }catch (Exception ex){
+            MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
+            Return = -2;
+            this.Close();
          }
 
-         comboBox.SelectedIndex = 0;
-      }
-
-      private void readLinkTypes() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectLinkTypes, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string name = reader.GetString(1);
-                  string description = "";
-                  if (!reader.IsDBNull(2)) {
-                     description = reader.GetString(2);
-                  }
-                  linkTypes.Add(new LinkType(id, name, description));
-               }
-
-               reader.Close();
-               connection.Close();
-            } catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-
-         }
+         GenericForm.FillComboBox(comboBox, linkTypes, true);
       }
 
       private void addLink_FormClosed(object sender, FormClosedEventArgs e) {
@@ -82,19 +48,15 @@ namespace SlinkData {
          }
 
          string url = urlTB.Text;
-         int link_type = ((LinkType)comboBox.SelectedItem).Id;
+         int link_type = ((LinkTypeString)comboBox.SelectedItem).Id;
          string comment = commentTB.Text;
 
          using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
             MySqlCommand command = new MySqlCommand(Query.insertIntoLinks, connection);
-            command.Parameters.AddWithValue("@link_type", link_type);
-            command.Parameters.AddWithValue("@url", url);
-            if (comment == "") {
-               command.Parameters.AddWithValue("@comment", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@comment", comment);
-            }
+
+            Parser.AddWithValue(command, "@link_type", link_type);
+            Parser.AddWithValue(command, "@url", url);
+            Parser.AddWithValue(command, "@comment", comment);
 
             try {
                connection.Open();

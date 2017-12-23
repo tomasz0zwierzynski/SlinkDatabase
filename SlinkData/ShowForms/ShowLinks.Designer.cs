@@ -60,6 +60,9 @@
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.Name = "ShowLinks";
          this.Text = "show Links";
+         this.Load += new System.EventHandler(this.ShowLinks_Load);
+         this.LocationChanged += new System.EventHandler(this.ShowLinks_LocationChanged);
+         this.SizeChanged += new System.EventHandler(this.ShowLinks_SizeChanged);
          ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
          this.ResumeLayout(false);
 

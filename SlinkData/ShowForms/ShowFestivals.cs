@@ -10,17 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class ShowFestivals : Form {
-      private MySqlContext context;
+   public partial class ShowFestivals : ContextedForm {
+
       private SortableBindingList<Festival> festivals;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
 
-      public ShowFestivals(MySqlContext _context) {
+      public ShowFestivals(MySqlContext _context) : base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
          festivals = new SortableBindingList<Festival>();
          readFestivals();
@@ -33,7 +29,7 @@ namespace SlinkData {
          }
       }
 
-      private void readFestivals() { 
+      private void readFestivals() {
          using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
             MySqlCommand command = new MySqlCommand(Query.showFestivals, connection);
 
@@ -45,39 +41,16 @@ namespace SlinkData {
                while (reader.Read()) {
                   int id = reader.GetInt32(0);
                   string name = reader.GetString(1);
-                  string town = "";
-                  if (!reader.IsDBNull(2)) {
-                     town = reader.GetString(2);
-                  }
-                  string link = "";
-                  if (!reader.IsDBNull(3)) {
-                     link = reader.GetString(3);
-                  }
-                  string mail = "";
-                  if (!reader.IsDBNull(4)) {
-                     mail = reader.GetString(4);
-                  }
-                  string start = "";
-                  if (!reader.IsDBNull(5)) {
-                     start = reader.GetString(5);
-                  }
-                  string deadline = "";
-                  if (!reader.IsDBNull(6)) {
-                     deadline = reader.GetString(6);
-                  }
-                  string manager = "";
-                  if (!reader.IsDBNull(7)) {
-                     manager = reader.GetString(7);
-                  }
-                  string rank = "";
-                  if (!reader.IsDBNull(8)) {
-                     rank = reader.GetString(8);
-                  }
-                  string comment = "";
-                  if (!reader.IsDBNull(9)) {
-                     comment = reader.GetString(9);
-                  }
-                  festivals.Add(new Festival(id, name, town, link,mail, start, deadline, manager, rank, comment));
+                  string town = (!reader.IsDBNull(2)) ? reader.GetString(2) : "";
+                  string link = (!reader.IsDBNull(3)) ? reader.GetString(3) : "";
+                  string mail = (!reader.IsDBNull(4)) ? reader.GetString(4) : "";
+                  string start = (!reader.IsDBNull(5)) ? reader.GetString(5) : "";
+                  string deadline = (!reader.IsDBNull(6)) ? reader.GetString(6) : "";
+                  string manager = (!reader.IsDBNull(7)) ? reader.GetString(7) : "";
+                  string rank = (!reader.IsDBNull(8)) ? reader.GetString(8) : "";
+                  string comment = (!reader.IsDBNull(9)) ? reader.GetString(9) : "";
+
+                  festivals.Add(new Festival(id, name, town, link, mail, start, deadline, manager, rank, comment));
                }
 
                reader.Close();
@@ -103,6 +76,21 @@ namespace SlinkData {
             Dispose();
             Close();
          }
+      }
+
+      private void ShowFestivals_Load(object sender, EventArgs e) {
+         Size = (Size)Properties.Settings.Default["ShowFestivalsSize"];
+         Location = (Point)Properties.Settings.Default["ShowFestivalsLocation"];
+      }
+
+      private void ShowFestivals_SizeChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowFestivalsSize"] = Size;
+         Properties.Settings.Default.Save();
+      }
+
+      private void ShowFestivals_LocationChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowFestivalsLocation"] = Location;
+         Properties.Settings.Default.Save();
       }
    }
 }

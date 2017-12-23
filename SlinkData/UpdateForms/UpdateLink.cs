@@ -11,21 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class UpdateLink : Form {
+   public partial class UpdateLink : ContextedForm {
 
-      private MySqlContext context;
-      private List<LinkType> linkTypes;
+      private List<LinkTypeString> linkTypes;
 
       private int selectedLinkId;
       LinkRaw selectedLink;
+      
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
-
-      public UpdateLink(MySqlContext _context, int _selectedLinkId) {
+      public UpdateLink(MySqlContext _context, int _selectedLinkId) : base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
+
 
          selectedLinkId = _selectedLinkId;
          selectedLink = readLinkOf(selectedLinkId);
@@ -33,16 +29,16 @@ namespace SlinkData {
          urlTB.Text = selectedLink.Url;
          commentTB.Text = selectedLink.Comment;
 
-         linkTypes = new List<LinkType>();
-         readLinkTypes();
-         LinkType currentLinkType = null;
-         foreach(LinkType obj in linkTypes) {
-            comboBox.Items.Add(obj);
-            if (obj.Id == selectedLink.LinkType) {
-               currentLinkType = obj;
-            }
+         try {
+            linkTypes = LinkTypeGet.Read(context, false);
          }
-         comboBox.SelectedIndex = comboBox.Items.IndexOf(currentLinkType);
+         catch (Exception ex) {
+            MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
+            Return = -2;
+            this.Close();
+         }
+
+         GenericForm.FillComboBox(comboBox, linkTypes, selectedLink.LinkType);
 
       }
 
@@ -57,12 +53,9 @@ namespace SlinkData {
                reader = command.ExecuteReader();
 
                while (reader.Read()) {
-                  int linkType = reader.GetInt32(1);
-                  string url = reader.GetString(2);
-                  string comment = "";
-                  if (!reader.IsDBNull(3)) {
-                     comment = reader.GetString(3);
-                  }
+                  string url = (!reader.IsDBNull(2)) ? reader.GetString(2) : "";
+                  string comment = (!reader.IsDBNull(3)) ? reader.GetString(3) : "";
+                  int linkType = (!reader.IsDBNull(1)) ? reader.GetInt32(1) : 0;
 
                   link = new LinkRaw(id, linkType, url, comment);
                }
@@ -80,36 +73,6 @@ namespace SlinkData {
          return link;
       }
 
-
-      private void readLinkTypes() {
-         using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
-            MySqlCommand command = new MySqlCommand(Query.selectLinkTypes, connection);
-
-            try {
-               connection.Open();
-               MySqlDataReader reader;
-               reader = command.ExecuteReader();
-
-               while (reader.Read()) {
-                  int id = reader.GetInt32(0);
-                  string name = reader.GetString(1);
-                  string description = "";
-                  if (!reader.IsDBNull(2)) {
-                     description = reader.GetString(2);
-                  }
-                  linkTypes.Add(new LinkType(id, name, description));
-               }
-
-               reader.Close();
-               connection.Close();
-            } catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when opening from database!\n" + ex.Message);
-               Return = -2;
-               this.Close();
-            }
-
-         }
-      }
 
       private void addLink_FormClosed(object sender, FormClosedEventArgs e) {
          
@@ -129,28 +92,24 @@ namespace SlinkData {
          }
 
          string url = urlTB.Text;
-         int link_type = ((LinkType)comboBox.SelectedItem).Id;
+         int link_type = ((LinkTypeString)comboBox.SelectedItem).Id;
          string comment = commentTB.Text;
 
          using (MySqlConnection connection = new MySqlConnection(context.ConnectionString)) {
             MySqlCommand command = new MySqlCommand(Query.updateLink, connection);
-            command.Parameters.AddWithValue("@id", selectedLinkId);
-            command.Parameters.AddWithValue("@link_type", link_type);
-            command.Parameters.AddWithValue("@url", url);
-            if (comment == "") {
-               command.Parameters.AddWithValue("@comment", DBNull.Value);
-            }
-            else {
-               command.Parameters.AddWithValue("@comment", comment);
-            }
+            Parser.AddWithValue(command, "@id", selectedLinkId);
+            Parser.AddWithValue(command, "@link_type", link_type);
+            Parser.AddWithValue(command, "@url", url);
+            Parser.AddWithValue(command, "@comment", comment);
 
             try {
                connection.Open();
                command.ExecuteNonQuery();
                LastInsertId = command.LastInsertedId;
                connection.Close();
-            }catch (Exception ex) {
-               MessageBox.Show("Something went wrong, when saving to database!\n"+ex.Message);
+            }
+            catch (Exception ex) {
+               MessageBox.Show("Something went wrong, when saving to database!\n" + ex.Message);
             }
 
          }

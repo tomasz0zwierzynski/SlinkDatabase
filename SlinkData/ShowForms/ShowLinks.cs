@@ -10,20 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SlinkData {
-   public partial class ShowLinks : Form {
+   public partial class ShowLinks : ContextedForm {
 
-      private MySqlContext context;
-      private SortableBindingList<Link> links;
 
-      public int Return { get; set; }
-      public long LastInsertId { get; set; }
+      private SortableBindingList<LinkString> links;
 
-      public ShowLinks(MySqlContext _context) {
+
+      public ShowLinks(MySqlContext _context) : base(_context) {
          InitializeComponent();
-         context = _context;
-         Return = -1;
 
-         links = new SortableBindingList<Link>();
+         links = new SortableBindingList<LinkString>();
          readLinks();
 
          var source = new BindingSource(links, null);
@@ -45,13 +41,11 @@ namespace SlinkData {
 
                while (reader.Read()) {
                   int id = reader.GetInt32(0);
-                  string url = reader.GetString(1);
-                  string comment = "";
-                  if (!reader.IsDBNull(2)) {
-                     comment = reader.GetString(2);
-                  }
-                  string link_type = reader.GetString(3);
-                  links.Add(new Link(id, link_type, url, comment));
+                  string url = (!reader.IsDBNull(1)) ? reader.GetString(1) : "";
+                  string comment = (!reader.IsDBNull(2)) ? reader.GetString(2) : "";
+                  string link_type = (!reader.IsDBNull(3)) ? reader.GetString(3) : "";
+
+                  links.Add(new LinkString(id, link_type, url, comment));
                }
 
                reader.Close();
@@ -67,7 +61,7 @@ namespace SlinkData {
       }
 
       private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-         int correpsondingId = ((Link)dataGridView1.CurrentCell.OwningRow.DataBoundItem).Id;
+         int correpsondingId = ((LinkString)dataGridView1.CurrentCell.OwningRow.DataBoundItem).Id;
          UpdateLink updateLinkForm = new UpdateLink(context, correpsondingId);
          updateLinkForm.ShowDialog();
 
@@ -77,6 +71,21 @@ namespace SlinkData {
             Dispose();
             Close();
          }
+      }
+
+      private void ShowLinks_Load(object sender, EventArgs e) {
+         Size = (Size)Properties.Settings.Default["ShowLinksSize"];
+         Location = (Point)Properties.Settings.Default["ShowLinksLocation"];
+      }
+
+      private void ShowLinks_LocationChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowLinksLocation"] = Location;
+         Properties.Settings.Default.Save();
+      }
+
+      private void ShowLinks_SizeChanged(object sender, EventArgs e) {
+         Properties.Settings.Default["ShowLinksSize"] = Size;
+         Properties.Settings.Default.Save();
       }
    }
 }
